@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An on-the-go Music Player. Unleash your potential by listening to songs here Ad-free and No Login.">
+    <title>Music Player - Stream Now</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <audio id="audio"></audio>
+    <div id="visualizer">
+        <canvas id="visual"></canvas>
+    </div>
+    <div class="music-player">
+        <nav class="top-nav">
+            <div class="search">
+                <div class="searchbar">
+                    <div class="searchbtn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <div class="searchbox" hidden>
+                        <input type="text" placeholder=" Press Enter to Search..." class="search-input">
+                    </div>
+                </div>
+                <div class="song-list"></div>
+                <div class="more">
+                    <button class="moreBtn">More</button>
+                </div>
+            </div>
+
+            <div class="trending">
+                <div class="top-bar">
+                    <h1 class="title">Trending</h1>
+                    <div class="trendingbtn">
+                        <ion-icon name="flash-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="trending-list"></div>
+            </div>
+        </nav>
+        <div class="main">
+            <h1 class="music-name"></h1>
+            <p class="artist-name"></p>
+
+            <div class="disk"></div>
+
+            <div class="song-slider">
+                <input type="range" value="0" class="seek-bar">
+                <span class="current-time">00:00</span>
+                <span class="song-duration">00:00</span>
+            </div>
+
+            <div class="controls">
+                <button class="btn backward-btn">
+                    <img src="images/pre.png">
+                </button>
+                <button class="play-btn pause">
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn forward-btn">
+                    <img src="images/nxt.png">
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/trending.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/visualize.js"></script>
+</body>
+
+</html>
