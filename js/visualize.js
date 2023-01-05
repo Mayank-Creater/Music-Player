@@ -25,7 +25,7 @@ audio.onplay = function () {
         currentAudio = audio.src;
     }
 
-    analyser.fftSize = 256;
+    analyser.fftSize = 128;
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
     const barWidth = visual.width / bufferLength;
