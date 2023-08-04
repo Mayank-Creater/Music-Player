@@ -15,6 +15,13 @@ function trend_play(a, musicData = song_dataList) {
         disk.classList.toggle('play');
     };
 
+    trending.classList.toggle('full')
+    navbar.classList.toggle('full')
+    mainWindow.style.display = 'inherit';
+    trendingText.style.display = 'none'
+    search.style.display = 'inherit';
+    trendingButton.innerHTML = `<ion-icon name="flash-outline"></ion-icon>`;
+
     seekBar.value = 0
 
     currentTime.innerHTML = '00:00';
