@@ -3,12 +3,14 @@ var audio = document.querySelector('audio');
 var song = document.querySelector('.music-name');
 var artist = document.querySelector('.artist-name');
 
-var more = document.querySelector('.moreBtn');
+var prev = document.querySelector('.prevBtn');
+var next = document.querySelector('.nextBtn');
 
 var listArea = document.querySelector('.song-list')
 var page = 1;
 var limit = 1;
 var dataList = [];
+var total_tracks = 0
 
 function play(i, musicData = dataList) {
     song.textContent = musicData[i]['name'];
@@ -20,6 +22,13 @@ function play(i, musicData = dataList) {
         playBtn.classList.toggle('pause');
         disk.classList.toggle('play');
     };
+
+    navbar.classList.toggle('full')
+    search.classList.toggle('full')
+    mainWindow.style.display = 'inherit';
+    searchBox.hidden = true;
+    trending.style.display = 'inherit';
+    searchButton.innerHTML = `<ion-icon name="search-outline"></ion-icon>`;
 
     seekBar.value = 0
 
@@ -37,6 +46,7 @@ function search_and_play(search, page, limit) {
         return response.json();
     }).then(function (res) {
         data = res['data']
+        total_tracks = data['total']
         dataList = data['results']
 
         numData = data['results'].length;
@@ -65,9 +75,20 @@ input.addEventListener('keypress', (e) => {
     }
 })
 
-more.addEventListener('click', (e) => {
+prev.addEventListener('click', (e) => {
     e.preventDefault();
     var search = input.value;
-    page += 1
+    if (page !== 1){
+        page -= 1
+    }
+    search_and_play(search, page, limit)
+});
+
+next.addEventListener('click', (e) => {
+    e.preventDefault();
+    var search = input.value;
+    if (page*10 < total_tracks){
+        page += 1
+    }
     search_and_play(search, page, limit)
 });
